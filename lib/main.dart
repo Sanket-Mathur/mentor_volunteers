@@ -1,9 +1,37 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+import 'screens/Login.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+void main() => runApp(const MaterialApp(
+      home: LandingPage(),
+    ));
+
+class LandingPage extends StatefulWidget {
+  const LandingPage({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return LandingPageState();
+  }
+}
+
+class LandingPageState extends State<LandingPage> {
+  startTime() async {
+    var duration = const Duration(seconds: 4);
+    return Timer(duration, route);
+  }
+
+  route() {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Login()));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTime();
+  }
 
   @override
   Widget build(BuildContext context) {
