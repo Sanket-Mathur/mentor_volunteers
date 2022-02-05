@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 import 'package:mentor_volunteers/provider/google_sign_in.dart';
 import 'package:mentor_volunteers/api/short_term_data.dart';
 
-// Dummy page for short-term mentorship
 class ShortTerm extends StatelessWidget {
-  const ShortTerm({Key? key}) : super(key: key);
+  ShortTerm({Key? key}) : super(key: key);
+
+  final controller = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,7 @@ class ShortTerm extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         actions: [
+          Text(user.displayName!),
           TextButton(
             onPressed: () {
               final provider =
@@ -28,53 +29,125 @@ class ShortTerm extends StatelessWidget {
           ),
         ],
       ),
-      // body: Container(
-      //   alignment: Alignment.center,
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       const Text('Profile'),
-      //       const SizedBox(height: 32),
-      //       CircleAvatar(
-      //         radius: 40,
-      //         backgroundImage: NetworkImage(user.photoURL!),
-      //       ),
-      //       const SizedBox(height: 32),
-      //       Text('Name: ' + user.displayName!),
-      //       const SizedBox(height: 32),
-      //       Text('Email: ' + user.email!),
-      //     ],
-      //   ),
-      // ),
       body: FutureBuilder<List<Question>>(
         future: getData(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Swiper(
-              scrollDirection: Axis.horizontal,
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, i) {
-                return Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(snapshot.data![i].date),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(snapshot.data![i].name),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(snapshot.data![i].content),
-                    ],
+            return Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: Colors.grey,
+                    width: 1,
                   ),
-                );
-              },
-              layout: SwiperLayout.DEFAULT,
+                ),
+              ),
+              child: Center(
+                child: PageView(
+                  controller: controller,
+                  children: snapshot.data!
+                      .map(
+                        (item) => Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 22,
+                              ),
+                              Text(
+                                item.date,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Text(
+                                item.name,
+                                style: const TextStyle(
+                                  fontSize: 25,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 22,
+                              ),
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(0),
+                                ),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    gradient: LinearGradient(
+                                        colors: [
+                                          Colors.white,
+                                          Colors.black,
+                                        ],
+                                        begin: FractionalOffset(1.0, 0.0),
+                                        end: FractionalOffset(1.0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        tileMode: TileMode.clamp),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Text(
+                                      item.content,
+                                      maxLines: 10,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                      textAlign: TextAlign.justify,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Center(
+                                child: IconButton(
+                                  icon: const Icon(Icons.expand_more),
+                                  onPressed: () {},
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 22,
+                              ),
+                              Text(
+                                item.title,
+                                style: const TextStyle(fontSize: 25),
+                              ),
+                              const SizedBox(
+                                height: 52,
+                              ),
+                              Row(
+                                children: [
+                                  Flexible(
+                                    flex: 1,
+                                    fit: FlexFit.tight,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: const Text('Skip'),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10,),
+                                  Flexible(
+                                    flex: 1,
+                                    fit: FlexFit.tight,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: const Text('Answer'),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
             );
           } else {
             return const Center(
