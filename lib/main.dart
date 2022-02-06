@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-// Splash Screem
+// Splash Screen
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 

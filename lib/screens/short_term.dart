@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:mentor_volunteers/provider/google_sign_in.dart';
 import 'package:mentor_volunteers/api/short_term_data.dart';
+import 'package:mentor_volunteers/screens/question_expansion.dart';
 
 class ShortTerm extends StatelessWidget {
   ShortTerm({Key? key}) : super(key: key);
@@ -106,7 +107,14 @@ class ShortTerm extends StatelessWidget {
                               Center(
                                 child: IconButton(
                                   icon: const Icon(Icons.expand_more),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              QuestionExpansion(question: item),
+                                        ));
+                                  },
                                   color: Colors.white,
                                 ),
                               ),
@@ -126,11 +134,15 @@ class ShortTerm extends StatelessWidget {
                                     flex: 1,
                                     fit: FlexFit.tight,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        controller.nextPage(duration: const Duration(milliseconds: 400), curve: Curves.ease);
+                                      },
                                       child: const Text('Skip'),
                                     ),
                                   ),
-                                  const SizedBox(width: 10,),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
                                   Flexible(
                                     flex: 1,
                                     fit: FlexFit.tight,
