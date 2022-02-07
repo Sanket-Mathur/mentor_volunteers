@@ -1,10 +1,15 @@
+import 'dart:math';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:mentor_volunteers/api/short_term_data.dart';
 
 Future<void> displayTextInputDialog(
     BuildContext context, Question question) async {
-  String answer = "";
+  String answerText = "";
+
+  final user = FirebaseAuth.instance.currentUser!;
 
   return showDialog(
     context: context,
@@ -12,7 +17,7 @@ Future<void> displayTextInputDialog(
       title: Text(question.title),
       content: TextField(
         onChanged: (value) {
-          answer = value;
+          answerText = value;
         },
         decoration: const InputDecoration(hintText: "Write your answer"),
         minLines: 1,
@@ -20,8 +25,50 @@ Future<void> displayTextInputDialog(
       ),
       actions: [
         TextButton(
-          onPressed: () {
+          onPressed: () async {
+            final months = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec"
+            ];
 
+            DateTime currentDate = DateTime.now();
+            String date = currentDate.day.toString() +
+                " " +
+                months[currentDate.month - 1] +
+                ", " +
+                currentDate.year.toString();
+
+            Answer answer = Answer(Random().nextInt(9999), user.displayName!, date, answerText);
+            question.answers.add(answer);
+            final response = await postAnswer(question);
+
+            final String result;
+
+            if (response == 200) {
+              Navigator.pop(context);
+              result = "Submitted";
+            } else {
+              result = "An error occurred! Please try again.";
+            }
+
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Center(
+                  child: Text(result),
+                ),
+              ),
+            );
           },
           child: const Text('Submit'),
         )
