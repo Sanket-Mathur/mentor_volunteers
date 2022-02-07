@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
 
-import 'package:mentor_volunteers/provider/google_sign_in.dart';
 import 'package:mentor_volunteers/api/short_term_data.dart';
+import 'package:mentor_volunteers/widgets/answer_input_dialog.dart';
+import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
 import 'package:mentor_volunteers/screens/question_expansion.dart';
 
 class ShortTerm extends StatelessWidget {
@@ -13,23 +12,8 @@ class ShortTerm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
-
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        actions: [
-          Text(user.displayName!),
-          TextButton(
-            onPressed: () {
-              final provider =
-                  Provider.of<GoogleSignInProvider>(context, listen: false);
-              provider.googleLogout();
-            },
-            child: const Text('Logout'),
-          ),
-        ],
-      ),
+      appBar: NavAppBar(),
       body: FutureBuilder<List<Question>>(
         future: getData(),
         builder: (context, snapshot) {
@@ -94,7 +78,7 @@ class ShortTerm extends StatelessWidget {
                                     padding: const EdgeInsets.all(10),
                                     child: Text(
                                       item.content,
-                                      maxLines: 10,
+                                      maxLines: 18,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
                                         color: Colors.black,
@@ -147,7 +131,9 @@ class ShortTerm extends StatelessWidget {
                                     flex: 1,
                                     fit: FlexFit.tight,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        displayTextInputDialog(context, item);
+                                      },
                                       child: const Text('Answer'),
                                     ),
                                   ),

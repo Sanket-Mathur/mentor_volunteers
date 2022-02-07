@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mentor_volunteers/screens/home_page.dart';
+import 'package:mentor_volunteers/screens/short_term.dart';
 import 'package:mentor_volunteers/provider/google_sign_in.dart';
 
 void main() async {
@@ -50,7 +51,11 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-        home: const LandingPage(),
+        routes: <String, WidgetBuilder>{
+          '/': (BuildContext context) => const LandingPage(),
+          '/HomePage': (BuildContext context) => const HomePage(),
+          '/ShortTerm': (BuildContext context) => ShortTerm(),
+        },
       ),
     );
   }
@@ -75,8 +80,7 @@ class LandingPageState extends State<LandingPage> {
 
   // route to login page with page replacement
   route() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const HomePage()));
+    Navigator.pushReplacementNamed(context, '/HomePage');
   }
 
   @override

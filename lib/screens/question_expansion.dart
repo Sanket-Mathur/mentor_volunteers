@@ -1,34 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
 
 import 'package:mentor_volunteers/api/short_term_data.dart';
-import 'package:mentor_volunteers/provider/google_sign_in.dart';
+import 'package:mentor_volunteers/widgets/answer_input_dialog.dart';
+import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
 
 class QuestionExpansion extends StatelessWidget {
   final Question question;
 
-  QuestionExpansion({Key? key, required this.question}) : super(key: key);
-
-  final user = FirebaseAuth.instance.currentUser!;
+  const QuestionExpansion({Key? key, required this.question}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        actions: [
-          Text(user.displayName!),
-          TextButton(
-            onPressed: () {
-              final provider =
-                  Provider.of<GoogleSignInProvider>(context, listen: false);
-              provider.googleLogout();
-            },
-            child: const Text('Logout'),
-          ),
-        ],
-      ),
+      appBar: NavAppBar(),
       body: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -143,7 +127,9 @@ class QuestionExpansion extends StatelessWidget {
                       flex: 1,
                       fit: FlexFit.tight,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          displayTextInputDialog(context, question);
+                        },
                         child: const Text('Answer'),
                       ),
                     ),
