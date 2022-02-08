@@ -7,7 +7,7 @@ import 'package:mentor_volunteers/api/short_term_data.dart';
 
 Future<void> displayTextInputDialog(
     BuildContext context, Question question) async {
-  String answerText = "";
+  String _answerText = "";
 
   final user = FirebaseAuth.instance.currentUser!;
 
@@ -17,7 +17,7 @@ Future<void> displayTextInputDialog(
       title: Text(question.title),
       content: TextField(
         onChanged: (value) {
-          answerText = value;
+          _answerText = value;
         },
         decoration: const InputDecoration(hintText: "Write your answer"),
         minLines: 1,
@@ -26,6 +26,10 @@ Future<void> displayTextInputDialog(
       actions: [
         TextButton(
           onPressed: () async {
+            if (_answerText.isEmpty) {
+              return;
+            }
+
             final months = [
               "Jan",
               "Feb",
@@ -48,9 +52,8 @@ Future<void> displayTextInputDialog(
                 ", " +
                 currentDate.year.toString();
 
-            Answer answer = Answer(Random().nextInt(9999), user.displayName!, date, answerText);
-            question.answers.add(answer);
-            final response = await postAnswer(question);
+            Answer answer = Answer(Random().nextInt(9999), user.displayName!, date, _answerText);
+            final response = await postAnswer(question.id, answer);
 
             final String result;
 

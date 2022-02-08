@@ -158,7 +158,7 @@ class _QuestionPostState extends State<QuestionPost> {
                           currentDate.year.toString();
 
                       Question question = Question(Random().nextInt(9999), user.displayName!, date, _title, _content);
-                      final response = await postAnswer(question);
+                      final response = await postQuestion(question);
 
                       final String result;
 

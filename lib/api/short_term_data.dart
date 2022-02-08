@@ -56,7 +56,7 @@ Future<int> postQuestion(Question question) async {
 }
 
 // Posting answers for the respective question
-Future<int> postAnswer(Question question) async {
+Future<int> postAnswer(int id, Answer answer) async {
   // // temporary url for posting data - Not working with mockAPI
   // var response = await http.post(
   //   Uri.https('61fd894fa58a4e00173c95b8.mockapi.io', 'answer'),
