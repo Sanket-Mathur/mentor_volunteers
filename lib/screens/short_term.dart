@@ -5,6 +5,7 @@ import 'package:mentor_volunteers/widgets/answer_input_dialog.dart';
 import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
 import 'package:mentor_volunteers/screens/question_expansion.dart';
 
+// The short term mentorship screen, initial screen when logged in
 class ShortTerm extends StatelessWidget {
   ShortTerm({Key? key}) : super(key: key);
 

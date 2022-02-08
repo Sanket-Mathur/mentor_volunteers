@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mentor_volunteers/api/short_term_data.dart';
 
+// Displays a popup alert bux for posting answers
 Future<void> displayTextInputDialog(
     BuildContext context, Question question) async {
   String _answerText = "";

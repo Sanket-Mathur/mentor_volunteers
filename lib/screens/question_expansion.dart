@@ -4,6 +4,7 @@ import 'package:mentor_volunteers/api/short_term_data.dart';
 import 'package:mentor_volunteers/widgets/answer_input_dialog.dart';
 import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
 
+// The question expansion screen respective of the question passed to the constructor
 class QuestionExpansion extends StatelessWidget {
   final Question question;
 
