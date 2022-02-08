@@ -1,10 +1,12 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mentor_volunteers/screens/home_page.dart';
 import 'package:mentor_volunteers/screens/short_term.dart';
+import 'package:mentor_volunteers/screens/question_post.dart';
 import 'package:mentor_volunteers/provider/google_sign_in.dart';
 
 void main() async {
@@ -55,6 +57,7 @@ class _MyAppState extends State<MyApp> {
           '/': (BuildContext context) => const LandingPage(),
           '/HomePage': (BuildContext context) => const HomePage(),
           '/ShortTerm': (BuildContext context) => ShortTerm(),
+          '/QuestionPost': (BuildContext context) => const QuestionPost(),
         },
       ),
     );

@@ -12,6 +12,7 @@ class QuestionExpansion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: NavAppBar(),
       body: Container(
         decoration: const BoxDecoration(
