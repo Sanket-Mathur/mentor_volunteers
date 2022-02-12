@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (snapshot.hasData) {
-          return const ShortTerm();
+          return ShortTerm();
         } else if (snapshot.hasError) {
           return const Center(
             child: Text('Something Went Wrong!'),
