@@ -6,7 +6,9 @@ import 'package:mentor_volunteers/provider/google_sign_in.dart';
 
 // Common appbar for the screens
 class NavAppBar extends StatelessWidget implements PreferredSizeWidget {
-  NavAppBar({Key? key})
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  NavAppBar({Key? key, required this.scaffoldKey})
       : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -19,11 +21,10 @@ class NavAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.black,
-      // Temporary question posting button
-      leading: TextButton(
-        child: const Icon(Icons.add),
+      leading: IconButton(
+        icon: const Icon(Icons.menu),
         onPressed: () {
-          Navigator.pushNamed(context, '/QuestionPost');
+          scaffoldKey.currentState?.openDrawer();
         },
       ),
       actions: [

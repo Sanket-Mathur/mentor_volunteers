@@ -52,6 +52,17 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
           ),
+          textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              textStyle: MaterialStateProperty.all<TextStyle>(
+                const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
         ),
         routes: <String, WidgetBuilder>{
           '/': (BuildContext context) => const LandingPage(),

@@ -3,18 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:mentor_volunteers/api/short_term_data.dart';
 import 'package:mentor_volunteers/widgets/answer_input_dialog.dart';
 import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
+import 'package:mentor_volunteers/widgets/slider_menu.dart';
 
 // The question expansion screen respective of the question passed to the constructor
 class QuestionExpansion extends StatelessWidget {
   final Question question;
 
-  const QuestionExpansion({Key? key, required this.question}) : super(key: key);
+  QuestionExpansion({Key? key, required this.question}) : super(key: key);
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: NavAppBar(),
+      key: scaffoldKey,
+      drawer: const SliderMenu(),
+      appBar: NavAppBar(
+        scaffoldKey: scaffoldKey,
+      ),
       body: Container(
         decoration: const BoxDecoration(
           border: Border(
