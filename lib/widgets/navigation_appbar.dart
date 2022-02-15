@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
-
-import 'package:mentor_volunteers/provider/google_sign_in.dart';
 
 // Common appbar for the screens
 class NavAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -28,15 +25,12 @@ class NavAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
       ),
       actions: [
-        TextButton(
-          onPressed: () {
-            final provider =
-                Provider.of<GoogleSignInProvider>(context, listen: false);
-            provider.googleLogout();
-            Navigator.popUntil(context, ModalRoute.withName('/HomePage'));
-          },
-          child: const Text('Logout'),
-        ),
+        IconButton(
+          icon: CircleAvatar(
+            backgroundImage: NetworkImage(user.photoURL!),
+          ),
+          onPressed: () => Navigator.pushNamed(context, '/Account'),
+        )
       ],
     );
   }

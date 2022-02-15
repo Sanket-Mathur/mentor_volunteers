@@ -25,7 +25,7 @@ class SliderMenu extends StatelessWidget {
             ),
             TextButton(
               child: const Text('Account'),
-              onPressed: () {}, // TODO: Add an account page
+              onPressed: () => Navigator.pushNamed(context, '/Account'),
             ),
             Expanded(child: Container()),
             ElevatedButton(
