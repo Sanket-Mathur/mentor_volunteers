@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 
 import 'package:mentor_volunteers/api/short_term_data.dart';
+import 'package:mentor_volunteers/screens/question_expansion.dart';
 import 'package:mentor_volunteers/widgets/answer_input_dialog.dart';
 import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
-import 'package:mentor_volunteers/screens/question_expansion.dart';
+import 'package:mentor_volunteers/widgets/slider_menu.dart';
 
 // The short term mentorship screen, initial screen when logged in
 class ShortTerm extends StatelessWidget {
   ShortTerm({Key? key}) : super(key: key);
 
   final controller = PageController(initialPage: 0);
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: NavAppBar(),
+      key: scaffoldKey,
+      drawer: const SliderMenu(),
+      appBar: NavAppBar(
+        scaffoldKey: scaffoldKey,
+      ),
       body: FutureBuilder<List<Question>>(
         future: getData(),
         builder: (context, snapshot) {
@@ -121,7 +127,10 @@ class ShortTerm extends StatelessWidget {
                                     fit: FlexFit.tight,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        controller.nextPage(duration: const Duration(milliseconds: 400), curve: Curves.ease);
+                                        controller.nextPage(
+                                            duration: const Duration(
+                                                milliseconds: 400),
+                                            curve: Curves.ease);
                                       },
                                       child: const Text('Skip'),
                                     ),

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:mentor_volunteers/api/short_term_data.dart';
 import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
+import 'package:mentor_volunteers/widgets/slider_menu.dart';
 
 // Question post screen
 class QuestionPost extends StatefulWidget {
@@ -18,6 +19,7 @@ class _QuestionPostState extends State<QuestionPost> {
   String _title = "", _content = "";
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final user = FirebaseAuth.instance.currentUser!;
 
@@ -25,7 +27,11 @@ class _QuestionPostState extends State<QuestionPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: NavAppBar(),
+      key: scaffoldKey,
+      drawer: const SliderMenu(),
+      appBar: NavAppBar(
+        scaffoldKey: scaffoldKey,
+      ),
       body: Container(
         decoration: const BoxDecoration(
           border: Border(
