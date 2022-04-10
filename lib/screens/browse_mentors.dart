@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mentor_volunteers/api/mentor_data.dart';
 import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
+import 'package:mentor_volunteers/widgets/request_input_dialog.dart';
 import 'package:mentor_volunteers/widgets/slider_menu.dart';
 
 class BrowseMentor extends StatelessWidget {
@@ -38,9 +39,14 @@ class BrowseMentor extends StatelessWidget {
                             fit: FlexFit.tight,
                             child: Container(
                               alignment: Alignment.topLeft,
-                              child: const Text(
-                                'VOLUNTEER',
-                                style: TextStyle(
+                              child: Text(
+                                [
+                                  'VOLUNTEER',
+                                  'CATEGORY 1',
+                                  'CATEGORY 2',
+                                  'CATEGORY 3'
+                                ][category < 4 ? category : 0],
+                                style: const TextStyle(
                                   fontSize: 18,
                                   letterSpacing: 3,
                                 ),
@@ -95,7 +101,9 @@ class BrowseMentor extends StatelessWidget {
                                       Icons.email_outlined,
                                       color: Colors.black,
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      displayTextRequestDialog(context);
+                                    },
                                   ),
                                 ),
                                 const Expanded(
