@@ -53,7 +53,8 @@ Future<void> displayTextInputDialog(
                 ", " +
                 currentDate.year.toString();
 
-            Answer answer = Answer(Random().nextInt(9999), user.displayName!, date, _answerText);
+            Answer answer = Answer(
+                Random().nextInt(9999), user.displayName!, date, _answerText);
             final response = await postAnswer(question.id, answer);
 
             final String result;
@@ -74,7 +75,14 @@ Future<void> displayTextInputDialog(
               ),
             );
           },
-          child: const Text('Submit'),
+          child: const Text(
+            'Submit',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
+              fontSize: 20,
+            ),
+          ),
         )
       ],
     ),

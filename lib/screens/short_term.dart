@@ -73,14 +73,15 @@ class ShortTerm extends StatelessWidget {
                                 child: Container(
                                   decoration: const BoxDecoration(
                                     gradient: LinearGradient(
-                                        colors: [
-                                          Colors.white,
-                                          Colors.black,
-                                        ],
-                                        begin: FractionalOffset(1.0, 0.0),
-                                        end: FractionalOffset(1.0, 1.0),
-                                        stops: [0.0, 1.0],
-                                        tileMode: TileMode.clamp),
+                                      colors: [
+                                        Colors.white,
+                                        Colors.black,
+                                      ],
+                                      begin: FractionalOffset(1.0, 0.0),
+                                      end: FractionalOffset(1.0, 1.0),
+                                      stops: [0.0, 1.0],
+                                      tileMode: TileMode.clamp,
+                                    ),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
@@ -101,11 +102,12 @@ class ShortTerm extends StatelessWidget {
                                   icon: const Icon(Icons.expand_more),
                                   onPressed: () {
                                     Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              QuestionExpansion(question: item),
-                                        ));
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            QuestionExpansion(question: item),
+                                      ),
+                                    );
                                   },
                                   color: Colors.white,
                                 ),
@@ -129,7 +131,8 @@ class ShortTerm extends StatelessWidget {
                                       onPressed: () {
                                         controller.nextPage(
                                             duration: const Duration(
-                                                milliseconds: 400),
+                                              milliseconds: 400,
+                                            ),
                                             curve: Curves.ease);
                                       },
                                       child: const Text('Skip'),

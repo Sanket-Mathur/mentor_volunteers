@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
+import 'package:mentor_volunteers/provider/google_sign_in.dart';
 import 'package:mentor_volunteers/screens/home_page.dart';
 import 'package:mentor_volunteers/screens/short_term.dart';
 import 'package:mentor_volunteers/screens/question_post.dart';
 import 'package:mentor_volunteers/screens/account.dart';
-import 'package:mentor_volunteers/provider/google_sign_in.dart';
+import 'package:mentor_volunteers/screens/select_mentor_category.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,7 +71,8 @@ class _MyAppState extends State<MyApp> {
           '/HomePage': (BuildContext context) => const HomePage(),
           '/ShortTerm': (BuildContext context) => ShortTerm(),
           '/QuestionPost': (BuildContext context) => const QuestionPost(),
-          '/Account': (BuildContext context) => Account(),
+          '/Account': (BuildContext context) => const Account(),
+          '/FindMentor': (BuildContext context) => MentorCategory(),
         },
       ),
     );
