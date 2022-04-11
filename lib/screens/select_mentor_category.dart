@@ -24,6 +24,17 @@ class MentorCategory extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Center(
+              child: Text(
+                'SELECT CATEGORY',
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 60,
+            ),
             const Text(
               'VOLUNTEER',
               style: TextStyle(fontWeight: FontWeight.w300),

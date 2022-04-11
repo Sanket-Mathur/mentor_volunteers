@@ -15,9 +15,7 @@ Future<void> displayTextRequestDialog(BuildContext context) async {
         onChanged: (value) {
           _requestText = value;
         },
-        decoration: const InputDecoration(
-          hintText: 'Write a request for the mentor',
-        ),
+        controller: TextEditingController()..text = 'I want to apply for your mentorship because ',
         minLines: 1,
         maxLines: null,
       ),
