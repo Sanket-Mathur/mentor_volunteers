@@ -10,6 +10,7 @@ import 'package:mentor_volunteers/screens/short_term.dart';
 import 'package:mentor_volunteers/screens/question_post.dart';
 import 'package:mentor_volunteers/screens/account.dart';
 import 'package:mentor_volunteers/screens/select_mentor_category.dart';
+import 'package:mentor_volunteers/screens/become_mentor.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -73,6 +74,7 @@ class _MyAppState extends State<MyApp> {
           '/QuestionPost': (BuildContext context) => const QuestionPost(),
           '/Account': (BuildContext context) => const Account(),
           '/FindMentor': (BuildContext context) => MentorCategory(),
+          '/BecomeMentor': (BuildContext context) => const BecomeMentor(),
         },
       ),
     );

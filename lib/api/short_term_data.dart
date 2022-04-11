@@ -27,10 +27,11 @@ Future<List<Question>> getData() async {
   List<Question> questions = [];
 
   for (var ques in jsonData) {
-    Question question =
-        Question(ques['id'], ques['name'], ques['date'], ques['title'], ques['content']);
+    Question question = Question(
+        ques['id'], ques['name'], ques['date'], ques['title'], ques['content']);
     for (var ans in ques['answers']) {
-      Answer answer = Answer(ans['id'], ans['name'], ans['date'], ans['content']);
+      Answer answer =
+          Answer(ans['id'], ans['name'], ans['date'], ans['content']);
       question.answers.add(answer);
     }
     questions.add(question);
