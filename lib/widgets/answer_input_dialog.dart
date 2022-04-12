@@ -55,22 +55,14 @@ Future<void> displayTextInputDialog(
 
             Answer answer = Answer(
                 Random().nextInt(9999), user.displayName!, date, _answerText);
-            final response = await postAnswer(question.id, answer);
 
-            final String result;
-
-            if (response == 200) {
-              Navigator.pop(context);
-              result = "Submitted";
-            } else {
-              result = "An error occurred! Please try again.";
-            }
+            // TODO: Send data to server
 
             showDialog(
               context: context,
-              builder: (context) => AlertDialog(
+              builder: (context) => const AlertDialog(
                 title: Center(
-                  child: Text(result),
+                  child: Text("Submitted"),
                 ),
               ),
             );

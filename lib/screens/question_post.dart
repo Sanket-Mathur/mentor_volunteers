@@ -165,22 +165,14 @@ class _QuestionPostState extends State<QuestionPost> {
                           currentDate.year.toString();
 
                       Question question = Question(Random().nextInt(9999), user.displayName!, date, _title, _content);
-                      final response = await postQuestion(question);
 
-                      final String result;
-
-                      if (response == 200) {
-                        Navigator.pop(context);
-                        result = "Submitted";
-                      } else {
-                        result = "An error occurred! Please try again.";
-                      }
+                      // TODO: Send data to server
 
                       showDialog(
                         context: context,
-                        builder: (context) => AlertDialog(
+                        builder: (context) => const AlertDialog(
                           title: Center(
-                            child: Text(result),
+                            child: Text("Submitted"),
                           ),
                         ),
                       );
