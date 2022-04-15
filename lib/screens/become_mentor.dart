@@ -43,12 +43,21 @@ class _BecomeMentorState extends State<BecomeMentor> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
+              const Text(
+                'BECOME A MENTOR',
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
               CircleAvatar(
-                radius: 70,
+                radius: 50,
                 backgroundImage: NetworkImage(user.photoURL!),
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               TextField(
                 readOnly: true,

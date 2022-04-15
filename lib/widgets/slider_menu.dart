@@ -40,7 +40,7 @@ class SliderMenu extends StatelessWidget {
             ),
             ElevatedButton(
               child: const Text('Become a Mentor'),
-              onPressed: () => Navigator.pushNamed(context, '/BecomeMentor'),
+              onPressed: () => Navigator.pushNamed(context, '/Requests'),
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size.fromHeight(50),
               ),
