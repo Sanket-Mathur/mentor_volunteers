@@ -4,9 +4,9 @@ import 'package:http/http.dart' as http;
 
 class Request {
   final int id;
-  final String name, email, createdAt, body;
+  final String name, email, createdAt, body, avatar;
 
-  Request(this.id, this.name, this.email, this.createdAt, this.body);
+  Request(this.id, this.name, this.email, this.createdAt, this.body, this.avatar);
 }
 
 Future<List<Request>> getRequests() async {
@@ -17,7 +17,7 @@ Future<List<Request>> getRequests() async {
   List<Request> requests = [];
 
   for (var req in jsonData) {
-    Request request = Request(req['id'], req['name'], req['email'], req['createdAt'], req['body']);
+    Request request = Request(req['id'], req['name'], req['email'], req['createdAt'], req['body'], req['avatar']);
     requests.add(request);
   }
 

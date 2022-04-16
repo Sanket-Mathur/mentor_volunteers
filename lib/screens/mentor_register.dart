@@ -189,6 +189,7 @@ class _BecomeMentorState extends State<BecomeMentor> {
                 child: const Text('Create Mentor Account'),
                 onPressed: () {
                   // TODO: Add mentor data and access to database
+                  Navigator.pushReplacementNamed(context, '/Accepted');
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(50),

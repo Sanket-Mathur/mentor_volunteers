@@ -9,9 +9,10 @@ import 'package:mentor_volunteers/screens/home_page.dart';
 import 'package:mentor_volunteers/screens/short_term.dart';
 import 'package:mentor_volunteers/screens/question_post.dart';
 import 'package:mentor_volunteers/screens/account.dart';
-import 'package:mentor_volunteers/screens/select_mentor_category.dart';
-import 'package:mentor_volunteers/screens/become_mentor.dart';
+import 'package:mentor_volunteers/screens/mentor_category.dart';
+import 'package:mentor_volunteers/screens/mentor_register.dart';
 import 'package:mentor_volunteers/screens/mentorship_requests.dart';
+import 'package:mentor_volunteers/screens/mentorship_accepted.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -77,6 +78,7 @@ class _MyAppState extends State<MyApp> {
           '/FindMentor': (BuildContext context) => MentorCategory(),
           '/BecomeMentor': (BuildContext context) => const BecomeMentor(),
           '/Requests': (BuildContext context) => const MentorshipRequests(),
+          '/Accepted': (BuildContext context) => MentorshipAccepted(),
         },
       ),
     );

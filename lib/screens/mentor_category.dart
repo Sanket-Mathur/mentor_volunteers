@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
 import 'package:mentor_volunteers/widgets/slider_menu.dart';
-import 'package:mentor_volunteers/screens/browse_mentors.dart';
+import 'package:mentor_volunteers/screens/mentors_browse.dart';
 
 class MentorCategory extends StatelessWidget {
   MentorCategory({Key? key}) : super(key: key);
