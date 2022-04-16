@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:mentor_volunteers/api/mentor_requests.dart';
 import 'package:mentor_volunteers/widgets/navigation_appbar.dart';
 import 'package:mentor_volunteers/widgets/slider_menu.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class MentorshipAccepted extends StatelessWidget {
   MentorshipAccepted({Key? key}) : super(key: key);
@@ -99,12 +97,9 @@ class MentorshipAccepted extends StatelessWidget {
                               ),
                               onPressed: () async {
                                 String url = 'mailto:' + item.email;
-                                log(url);
                                 if (await canLaunch(url)) {
-                                  log('Yes');
                                   await launch(url);
                                 } else {
-                                  log('No');
                                   throw 'Could not launch $url';
                                 }
                               },
