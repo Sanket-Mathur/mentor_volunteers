@@ -23,7 +23,10 @@ class BrowseMentor extends StatelessWidget {
         scaffoldKey: scaffoldKey,
       ),
       body: FutureBuilder<List<Mentor>>(
-        future: getMentor(category),
+        future: Future<List<Mentor>>(() {
+          // TODO: Fetch data from the server
+          return [];
+        }),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return PageView(

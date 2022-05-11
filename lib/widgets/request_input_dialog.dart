@@ -15,7 +15,8 @@ Future<void> displayTextRequestDialog(BuildContext context) async {
         onChanged: (value) {
           _requestText = value;
         },
-        controller: TextEditingController()..text = 'I want to apply for your mentorship because ',
+        controller: TextEditingController()
+          ..text = 'I want to apply for your mentorship because ',
         minLines: 1,
         maxLines: null,
       ),

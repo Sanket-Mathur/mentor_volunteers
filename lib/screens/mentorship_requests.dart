@@ -25,7 +25,10 @@ class _MentorshipRequestsState extends State<MentorshipRequests> {
         scaffoldKey: scaffoldKey,
       ),
       body: FutureBuilder<List<Request>>(
-        future: getRequests(),
+        future: Future<List<Request>>(() {
+          // TODO: Fetch data from server
+          return [];
+        }),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return SingleChildScrollView(

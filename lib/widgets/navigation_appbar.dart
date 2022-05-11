@@ -13,7 +13,7 @@ class NavAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Size preferredSize;
 
   final user = FirebaseAuth.instance.currentUser!;
-  
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

@@ -23,7 +23,10 @@ class ShortTerm extends StatelessWidget {
         scaffoldKey: scaffoldKey,
       ),
       body: FutureBuilder<List<Question>>(
-        future: getData(),
+        future: Future<List<Question>>(() {
+          // TODO: Fetch data from server
+          return [];
+        }),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Container(

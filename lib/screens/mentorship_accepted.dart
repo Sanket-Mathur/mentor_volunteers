@@ -33,7 +33,10 @@ class MentorshipAccepted extends StatelessWidget {
             height: 20,
           ),
           FutureBuilder<List<Request>>(
-            future: getRequests(),
+            future: Future<List<Request>>(() {
+              // TODO: Fetch data from server
+              return [];
+            }),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Expanded(
@@ -91,7 +94,8 @@ class MentorshipAccepted extends StatelessWidget {
                                   Container(
                                     color: Colors.grey,
                                     height: 1,
-                                    width: MediaQuery.of(context).size.width - 50,
+                                    width:
+                                        MediaQuery.of(context).size.width - 50,
                                   ),
                                 ],
                               ),

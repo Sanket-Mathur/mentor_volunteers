@@ -48,7 +48,7 @@ class QuestionExpansion extends StatelessWidget {
                     borderRadius: BorderRadius.circular(0),
                   ),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height * (2/3),
+                    height: MediaQuery.of(context).size.height * (2 / 3),
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.all(10),
                       child: Column(

@@ -119,7 +119,7 @@ class _QuestionPostState extends State<QuestionPost> {
                       decorationColor: Colors.white,
                     ),
                     maxLength: 1000,
-                    maxLines: 20,
+                    maxLines: 15,
                     buildCounter: (context,
                         {required currentLength,
                         required isFocused,
@@ -164,7 +164,8 @@ class _QuestionPostState extends State<QuestionPost> {
                           ", " +
                           currentDate.year.toString();
 
-                      Question question = Question(Random().nextInt(9999), user.displayName!, date, _title, _content);
+                      Question question = Question(Random().nextInt(9999),
+                          user.displayName!, date, _title, _content);
 
                       // TODO: Send data to server
 
