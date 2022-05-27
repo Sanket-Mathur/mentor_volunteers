@@ -65,7 +65,9 @@ class _MentorshipRequestsState extends State<MentorshipRequests> {
                               fit: FlexFit.tight,
                               flex: 1,
                               child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  // TODO: Accept mentorship request
+                                },
                                 icon: const Icon(
                                   Icons.check_circle,
                                   color: Colors.lightGreenAccent,
